@@ -1189,8 +1189,8 @@ select {
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-bottom: 40px;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .form-group.full {
@@ -1199,76 +1199,65 @@ select {
 
 .form-group label {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--primary);
-  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 12px 0;
-  background: transparent !important;
-  border: none !important;
-  border-bottom: 2px solid var(--border) !important;
-  border-radius: 0 !important;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
   color: var(--text);
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: none !important;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-bottom-color: var(--primary) !important;
-  padding-left: 8px;
-  background: rgba(163, 45, 45, 0.02) !important;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--text-muted);
-  opacity: 0.5;
-  font-weight: 400;
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(163, 45, 45, 0.08);
+  transform: translateY(-1px);
 }
 
 .phone-input {
   display: flex;
-  align-items: center;
-  border-bottom: 2px solid var(--border);
-  transition: all 0.4s ease;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .phone-input:focus-within {
-  border-bottom-color: var(--primary);
-  padding-left: 8px;
-  background: rgba(163, 45, 45, 0.02);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(163, 45, 45, 0.08);
+  transform: translateY(-1px);
 }
 
 .country-code {
-  font-weight: 700;
-  color: var(--primary);
-  margin-right: 12px;
-  font-size: 1.1rem;
+  padding: 0 16px;
+  background: var(--bg-alt);
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  user-select: none;
 }
 
 .phone-input input {
-  padding: 12px 0 !important;
-  border-bottom: none !important;
-}
-
-.modal-form button[type="submit"] {
-  width: 100%;
-  padding: 20px;
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 20px;
-  border-radius: 100px;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 @media (max-width: 900px) {
@@ -2040,17 +2029,47 @@ select {
     font-size: 0.8rem;
   }
   .services-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .service-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
     gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    height: auto;
   }
   .service-card-img {
-    height: 160px;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    border-radius: 12px;
+    overflow: hidden;
   }
   .service-card-body {
-    padding: 20px;
+    padding: 0;
+    text-align: left;
+    flex: 1;
   }
   .service-card-body h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+  .service-card-body p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+  }
+  .service-card-body .btn {
+    display: none;
   }
 
   /* -- Featured -- */
