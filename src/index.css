@@ -2161,12 +2161,34 @@ select {
   }
   .reviews-summary-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 32px;
+    padding: 20px 0;
   }
   .summary-left {
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
+    padding-bottom: 24px;
+    width: 100%;
+  }
+  .summary-center {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .summary-right {
+    width: 100%;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .review-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .review-rating-top {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
   }
   .reviews-filter-bar {
     flex-direction: column;
