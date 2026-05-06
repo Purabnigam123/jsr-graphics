@@ -355,8 +355,13 @@ select {
 }
 
 .theme-toggle-switch.dark {
-  background: rgba(0, 0, 0, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.theme-toggle-switch .toggle-icon {
+  color: #fff !important;
+  opacity: 0.8;
 }
 
 .toggle-icon {
@@ -428,22 +433,17 @@ select {
   flex-direction: column;
   gap: 6px;
   cursor: pointer;
-  padding: 10px;
-  width: 44px;
-  height: 44px;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
   backdrop-filter: blur(10px) saturate(150%);
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .mobile-toggle span {
   width: 20px;
   height: 2px;
-  background: var(--text);
+  background: #fff !important;
   border-radius: 2px;
   transition: all var(--transition);
 }
