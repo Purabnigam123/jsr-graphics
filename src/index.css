@@ -507,6 +507,10 @@ select {
   transition: all var(--transition);
 }
 
+.mobile-menu a.btn {
+  color: #fff !important;
+}
+
 .mobile-menu a:hover {
   background: var(--bg-alt);
   color: var(--primary);
