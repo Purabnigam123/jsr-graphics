@@ -268,7 +268,13 @@ select {
   width: 100%;
   z-index: 1000;
   padding: 16px 0;
-  background: transparent !important;
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  -moz-backdrop-filter: blur(20px) saturate(180%) !important;
+  -o-backdrop-filter: blur(20px) saturate(180%) !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition);
 }
@@ -276,14 +282,12 @@ select {
 .navbar::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 10, 10, 0.6) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  inset: 0;
+  background: inherit;
+  backdrop-filter: inherit;
+  -webkit-backdrop-filter: inherit;
   z-index: -1;
+  transform: translate3d(0, 0, 0);
 }
 
 .navbar.scrolled {
