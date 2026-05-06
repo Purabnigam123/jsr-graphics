@@ -268,9 +268,9 @@ select {
   width: 100%;
   z-index: 1000;
   padding: 16px 0;
-  background: rgba(15, 15, 15, 0.3) !important;
-  backdrop-filter: blur(40px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(150%) !important;
   transform: translateZ(0);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition);
@@ -309,7 +309,6 @@ select {
 .logo-img {
   height: 40px;
   width: auto;
-  border: 5px solid red !important;
   display: block;
 }
 
