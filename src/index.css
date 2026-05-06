@@ -268,9 +268,9 @@ select {
   width: 100%;
   z-index: 1000;
   padding: 16px 0;
-  background: rgba(0, 0, 0, 0.2) !important;
-  backdrop-filter: blur(30px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  background: rgba(10, 10, 10, 0.45) !important;
+  backdrop-filter: blur(12px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
   transform: translateZ(0) !important;
   -webkit-transform: translateZ(0) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -278,8 +278,8 @@ select {
 }
 
 .navbar .container {
-  backdrop-filter: blur(30px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  backdrop-filter: blur(12px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
 }
 
 .navbar::before,

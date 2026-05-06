@@ -12,8 +12,8 @@ export default function Navbar() {
   useEffect(() => {
     const navbar = document.getElementById('navbar');
     if (navbar) {
-      navbar.style.backdropFilter = 'blur(25px) saturate(200%)';
-      navbar.style.webkitBackdropFilter = 'blur(25px) saturate(200%)';
+      navbar.style.backdropFilter = 'blur(12px) saturate(150%)';
+      navbar.style.webkitBackdropFilter = 'blur(12px) saturate(150%)';
     }
 
     const handleScroll = () => {
