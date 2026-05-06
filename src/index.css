@@ -339,8 +339,10 @@ select {
 .theme-toggle-switch {
   width: 58px;
   height: 30px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 100px;
   position: relative;
   cursor: pointer;
@@ -353,8 +355,8 @@ select {
 }
 
 .theme-toggle-switch.dark {
-  background: #1a1d23;
-  border-color: #2d333b;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .toggle-icon {
@@ -431,9 +433,11 @@ select {
   height: 44px;
   justify-content: center;
   align-items: center;
-  background: var(--bg-alt);
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
   border-radius: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .mobile-toggle span {
