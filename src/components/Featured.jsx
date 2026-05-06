@@ -16,7 +16,7 @@ function FeaturedCard({ image, title, desc }) {
       <div className="featured-overlay">
         <h3>{title}</h3>
         <p>{desc}</p>
-        <a href="#contact" className="btn btn-orange btn-sm">
+        <a href="#contact" className="btn btn-primary btn-sm">
           Get Quote
         </a>
       </div>
