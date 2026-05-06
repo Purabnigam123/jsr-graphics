@@ -2241,17 +2241,17 @@ select {
 
   /* -- Searchable Select -- */
   .select-dropdown {
-    position: fixed;
-    top: auto;
-    bottom: 0;
+    position: absolute;
+    top: calc(100% + 8px);
     left: 0;
     width: 100%;
-    border-radius: 20px 20px 0 0;
-    max-height: 60vh;
-    animation: slideUp 0.3s ease forwards;
+    border-radius: var(--radius-lg);
+    max-height: 350px;
+    animation: slideDown 0.3s ease forwards;
+    z-index: 10000;
   }
   .options-list {
-    max-height: 40vh;
+    max-height: 250px;
   }
 
   /* -- Review Form -- */
