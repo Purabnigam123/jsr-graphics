@@ -1577,6 +1577,7 @@ select {
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
+  overflow: visible !important;
 }
 .contact-form {
   background: var(--bg-card);
@@ -1587,6 +1588,8 @@ select {
 }
 .form-group {
   margin-bottom: 20px;
+  position: relative;
+  overflow: visible !important;
 }
 .form-group label {
   display: block;
@@ -3008,7 +3011,7 @@ select {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 999;
+  z-index: 9000;
 }
 
 @keyframes slideDown {
