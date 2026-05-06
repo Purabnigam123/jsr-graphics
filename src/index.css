@@ -1189,8 +1189,8 @@ select {
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: 32px;
+  margin-bottom: 40px;
 }
 
 .form-group.full {
@@ -1199,65 +1199,76 @@ select {
 
 .form-group label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--text-secondary);
-  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--primary);
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 16px 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  padding: 12px 0;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid var(--border) !important;
+  border-radius: 0 !important;
   color: var(--text);
-  font-size: 1rem;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: none !important;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--primary);
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(163, 45, 45, 0.08);
-  transform: translateY(-1px);
+  border-bottom-color: var(--primary) !important;
+  padding-left: 8px;
+  background: rgba(163, 45, 45, 0.02) !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-weight: 400;
 }
 
 .phone-input {
   display: flex;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  transition: all 0.3s ease;
-  overflow: hidden;
+  align-items: center;
+  border-bottom: 2px solid var(--border);
+  transition: all 0.4s ease;
 }
 
 .phone-input:focus-within {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(163, 45, 45, 0.08);
-  transform: translateY(-1px);
+  border-bottom-color: var(--primary);
+  padding-left: 8px;
+  background: rgba(163, 45, 45, 0.02);
 }
 
 .country-code {
-  padding: 0 16px;
-  background: var(--bg-alt);
-  font-weight: 600;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  border-right: 1px solid var(--border);
-  user-select: none;
+  font-weight: 700;
+  color: var(--primary);
+  margin-right: 12px;
+  font-size: 1.1rem;
 }
 
 .phone-input input {
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+  padding: 12px 0 !important;
+  border-bottom: none !important;
+}
+
+.modal-form button[type="submit"] {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  border-radius: 100px;
 }
 
 @media (max-width: 900px) {
