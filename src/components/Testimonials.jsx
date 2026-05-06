@@ -148,7 +148,7 @@ function AllReviewsModal({ isOpen, onClose, reviews = [], stats }) {
           <div className="reviews-summary-grid">
             <div className="summary-left">
               <div className="large-score">{avgRating}</div>
-              <StarRating rating={Math.round(parseFloat(avgRating))} size={20} />
+              <StarRating rating={Math.round(parseFloat(avgRating))} size={16} />
               <div className="total-ratings">{totalCount} ratings</div>
             </div>
             
@@ -207,7 +207,7 @@ function AllReviewsModal({ isOpen, onClose, reviews = [], stats }) {
                   </div>
                   <div className="review-rating-top">
                     <span className="score-num">{r.rating || 0}.0</span>
-                    <StarRating rating={r.rating || 0} size={14} />
+                    <StarRating rating={r.rating || 0} size={12} />
                   </div>
                 </div>
 
@@ -293,7 +293,7 @@ export default function Testimonials() {
           <div className="main-overall-rating">
             <TrendingUp size={20} className="stats-icon" />
             <span className="avg-num">{stats.avg}</span>
-            <StarRating rating={Math.round(stats.avg)} size={20} />
+            <StarRating rating={Math.round(stats.avg)} size={16} />
             <span className="total-text">based on {stats.count} reviews</span>
           </div>
 
