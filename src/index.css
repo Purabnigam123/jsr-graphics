@@ -1887,6 +1887,26 @@ select {
   }
   .mobile-toggle {
     display: flex;
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .mobile-toggle span {
+    background: #fff;
+  }
+  .theme-toggle-switch {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .theme-toggle-switch.dark {
+    background: rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .toggle-icon {
+    color: #fff;
   }
   .navbar {
     padding: 12px 0;
