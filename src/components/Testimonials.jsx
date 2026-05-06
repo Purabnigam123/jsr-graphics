@@ -139,91 +139,64 @@ function AllReviewsModal({ isOpen, onClose, reviews = [], stats }) {
   return (
     <div className="modal-overlay active" onClick={onClose}>
       <div className="modal-container active all-reviews-modal" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose} aria-label="Close">
-          <X size={24} />
+        <button className="modal-close-minimal" onClick={onClose} aria-label="Close">
+          <X size={20} />
         </button>
-        <div className="modal-content">
-          <h2 className="modal-title">Customer Reviews</h2>
+        <div className="modal-content-ios">
+          <h2 className="ios-modal-title">Ratings & Reviews</h2>
           
-          <div className="reviews-summary-grid">
-            <div className="summary-left">
-              <div className="large-score">{avgRating}</div>
-              <StarRating rating={Math.round(parseFloat(avgRating))} size={16} />
-              <div className="total-ratings">{totalCount} ratings</div>
+          <div className="ios-summary-section">
+            <div className="ios-summary-left">
+              <div className="ios-large-score">{avgRating}</div>
+              <div className="ios-out-of">out of 5</div>
             </div>
             
-            <div className="summary-center">
-              {[5, 4, 3, 2, 1].map((star) => {
-                const count = safeDist[5 - star] || 0;
-                const percentage = totalCount > 0 ? (count / totalCount) * 100 : 0;
-                return (
-                  <div key={star} className="rating-bar-row">
-                    <span className="star-num">{star}.0</span>
-                    <div className="bar-bg">
-                      <div className="bar-fill" style={{ width: `${percentage}%` }}></div>
+            <div className="ios-summary-right">
+              <div className="ios-bars-container">
+                {[5, 4, 3, 2, 1].map((star) => {
+                  const count = safeDist[5 - star] || 0;
+                  const percentage = totalCount > 0 ? (count / totalCount) * 100 : 0;
+                  return (
+                    <div key={star} className="ios-bar-row">
+                      <div className="ios-star-mini">
+                        {[...Array(star)].map((_, i) => <Star key={i} size={6} fill="var(--text-muted)" color="var(--text-muted)" />)}
+                      </div>
+                      <div className="ios-bar-bg">
+                        <div className="ios-bar-fill" style={{ width: `${percentage}%` }}></div>
+                      </div>
                     </div>
-                    <span className="star-count">{count}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="summary-right">
-              <div className="category-grid">
-                {categoryStats.map((cat) => (
-                  <div key={cat.label} className="cat-item">
-                    <div className="cat-header">
-                      <span className="cat-label">{cat.label}</span>
-                      <span className="cat-score">{cat.score}</span>
-                    </div>
-                    <div className="cat-bar">
-                      <div className="cat-fill" style={{ width: `${(cat.score / 5) * 100}%` }}></div>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
+              <div className="ios-total-count">{totalCount.toLocaleString()} Ratings</div>
             </div>
           </div>
 
-          <div className="reviews-filter-bar">
-            <div className="sort-label">Sort by:</div>
-            <div className="filter-group">
-              <button className={`filter-tab ${sortBy === 'newest' ? 'active' : ''}`} onClick={() => setSortBy('newest')}>Newest</button>
-              <button className={`filter-tab ${sortBy === 'highest' ? 'active' : ''}`} onClick={() => setSortBy('highest')}>Highest Rating</button>
-              <button className={`filter-tab ${sortBy === 'lowest' ? 'active' : ''}`} onClick={() => setSortBy('lowest')}>Lowest Rating</button>
-            </div>
+          <div className="ios-action-row">
+            <button className="ios-action-link" onClick={() => { onClose(); /* Trigger Add Review */ }}>
+              Write a Review
+            </button>
           </div>
 
-          <div className="reviews-list-premium">
+          <div className="ios-reviews-header">
+            <div className="ios-sort-label">Most Helpful</div>
+            <LucideIcons.ChevronDown size={14} color="var(--primary)" />
+          </div>
+
+          <div className="ios-reviews-list">
             {sortedReviews.map((r, i) => (
-              <div key={i} className="premium-review-card">
-                <div className="review-header-flex">
-                  <div className="user-avatar">
-                    {(r.author || 'U').charAt(0).toUpperCase()}
+              <div key={i} className="ios-review-card">
+                <div className="ios-card-header">
+                  <div className="ios-card-top-row">
+                    <h4 className="ios-review-headline">{r.categories ? Object.keys(r.categories)[0] : "Great Service"}</h4>
+                    <span className="ios-review-date">{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                   </div>
-                  <div className="user-meta">
-                    <h4>{r.author || 'Anonymous'}</h4>
-                    <p>{r.role || 'Verified Customer'}</p>
-                  </div>
-                  <div className="review-rating-top">
-                    <span className="score-num">{r.rating || 0}.0</span>
-                    <StarRating rating={r.rating || 0} size={12} />
+                  <div className="ios-card-meta-row">
+                    <StarRating rating={r.rating || 0} size={10} />
+                    <span className="ios-review-author">{r.author || 'Anonymous'}</span>
                   </div>
                 </div>
-
-                {r.categories && (
-                  <div className="card-category-ratings">
-                    {Object.entries(r.categories).map(([name, score]) => (
-                      <div key={name} className="card-cat-pill">
-                        <span className="pill-label">{name}:</span>
-                        <span className="pill-score">{score}.0</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <p className="review-text">"{r.quote || 'No comment provided.'}"</p>
-                <div className="review-date">Post Date: {new Date().toLocaleDateString()}</div>
+                <p className="ios-review-body">{r.quote || 'No comment provided.'}</p>
               </div>
             ))}
           </div>
