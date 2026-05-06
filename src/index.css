@@ -266,11 +266,11 @@ select {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  padding: 16px 0;
+  padding: 20px 0;
+  z-index: 20000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(10, 10, 10, 0.45) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all var(--transition);
 }
 
 /* Container Blur Removed to fix glitch */
@@ -1008,7 +1008,7 @@ select {
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
-  z-index: 2000;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1101,6 +1101,23 @@ select {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  z-index: 20000;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .modal-img {
@@ -3011,7 +3028,7 @@ select {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9000;
+  z-index: 5000;
 }
 
 @keyframes slideDown {
