@@ -962,22 +962,6 @@ select {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   position: relative;
 }
-.service-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--gold));
-  transform: scaleX(0);
-  transition: transform var(--transition);
-  transform-origin: left;
-  z-index: 10;
-}
-.service-card:hover::before {
-  transform: scaleX(1);
-}
 .service-card.hidden {
   display: none;
 }
@@ -1404,22 +1388,6 @@ select {
   text-align: left;
   position: relative;
   overflow: hidden;
-}
-.why-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--gold));
-  transform: scaleX(0);
-  transition: transform var(--transition);
-  transform-origin: left;
-  z-index: 10;
-}
-.why-card:hover::before {
-  transform: scaleX(1);
 }
 .why-card:hover {
   border-color: var(--primary);
@@ -1939,38 +1907,11 @@ select {
   }
 
   /* -- Cards Glass/Line Fix -- */
-  .about-card::before,
-  .service-card::before,
-  .why-card::before {
+  .about-card::before {
     transform: scaleX(1) !important;
   }
 
   .service-card,
-  .why-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card::before,
-  .why-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--gold));
-    transform: scaleX(0);
-    transition: transform var(--transition);
-    transform-origin: left;
-    z-index: 10;
-  }
-
-  .service-card:hover::before,
-  .why-card:hover::before {
-    transform: scaleX(1);
-  }
-
   /* -- Navbar -- */
   .nav-links {
     display: none;
