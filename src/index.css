@@ -2243,9 +2243,11 @@ select {
   .hero-buttons {
     flex-direction: column;
     width: 100%;
+    align-items: center;
   }
   .hero-buttons .btn {
-    width: 100%;
+    width: auto;
+    min-width: 220px;
     justify-content: center;
   }
   .hero-stats {
