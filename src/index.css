@@ -1688,8 +1688,11 @@ ul {
     align-items: flex-end;
   }
   .modal-container {
-    max-height: 92vh;
-    border-radius: 20px 20px 0 0;
+    width: 95% !important;
+    max-height: 90vh !important;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
   }
   .modal-header-section {
     grid-template-columns: 1fr;
@@ -2339,15 +2342,25 @@ ul {
 
 /* ========== MOBILE REVIEWS OVERRIDES ========== */
 @media (max-width: 768px) {
-  .review-modal .modal-content,
   .all-reviews-modal .modal-content {
-    padding: 24px 16px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+  }
+  
+  .reviews-list-premium {
+    overflow-y: visible !important;
+    flex: none !important;
   }
   
   .reviews-summary-grid {
+    flex-shrink: 0;
     grid-template-columns: 1fr !important;
-    gap: 32px;
-    padding: 20px 0;
+    gap: 24px;
+    padding: 10px 0;
   }
   
   .summary-left {
