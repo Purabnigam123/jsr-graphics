@@ -1,18 +1,6 @@
-import { useReveal, useCounter } from '../hooks/useAnimations';
+import { useReveal } from '../hooks/useAnimations';
 
-function HeroStat({ target, label }) {
-  const [ref, isVisible] = useReveal(0.5);
-  const count = useCounter(target, 2000, isVisible);
 
-  return (
-    <div className="hero-stat" ref={ref}>
-      <div className="number">
-        {count.toLocaleString()}<span>+</span>
-      </div>
-      <div className="label">{label}</div>
-    </div>
-  );
-}
 
 export default function Hero() {
   const [contentRef, contentVisible] = useReveal(0.3);

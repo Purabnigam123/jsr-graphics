@@ -5,8 +5,8 @@ export default function Preloader() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // Random time between 1000 and 5000 ms
-    const time = Math.floor(Math.random() * 2000) + 1000;
+    // Random time between 1000 and 000 ms
+    const time = Math.floor(Math.random() * 3000) + 1000;
     
     const timer = setTimeout(() => {
       setFadeOut(true);

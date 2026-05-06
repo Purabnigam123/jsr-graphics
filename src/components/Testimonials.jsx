@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useReveal } from '../hooks/useAnimations';
 import initialTestimonials from '../data/testimonials';
-import { Star, X, Filter, MessageSquarePlus, ListFilter, TrendingUp } from 'lucide-react';
+import { Star, X, MessageSquarePlus, ListFilter, TrendingUp } from 'lucide-react';
 
 const StarRating = ({ rating, interactive = false, onRate, size = 16 }) => {
   return (

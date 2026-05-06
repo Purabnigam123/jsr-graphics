@@ -1,5 +1,5 @@
 import { useReveal } from '../hooks/useAnimations';
-import { Package, Tag, FileText, Briefcase } from 'lucide-react';
+
 
 const featured = [
   { image: '/packages.png', title: 'Packaging Boxes', desc: 'Custom packaging for garments, electronics, medicine & more' },

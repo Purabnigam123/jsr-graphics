@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MessageCircle, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 export default function FloatingButtons() {
   const [showTop, setShowTop] = useState(false);
