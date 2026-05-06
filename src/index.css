@@ -2809,12 +2809,14 @@ select {
 
 .form-group-inline {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 12px;
   background: var(--bg);
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--border);
+  text-align: center;
 }
 
 .category-select-grid label {
