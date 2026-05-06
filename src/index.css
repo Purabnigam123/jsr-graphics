@@ -2211,7 +2211,7 @@ select {
 
   /* -- Hero -- */
   .hero {
-    min-height: 80vh;
+    min-height: 100vh;
   }
   .hero h1 {
     font-size: clamp(24px, 9vw, 36px);
