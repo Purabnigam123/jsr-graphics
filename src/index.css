@@ -1502,13 +1502,6 @@ select {
   border-radius: var(--radius-xl);
   box-shadow: 0 8px 32px var(--shadow);
 }
-.stars {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: nowrap;
-}
-
 .testimonial-inner .stars {
   color: var(--gold);
   font-size: 1.2rem;
@@ -2141,11 +2134,13 @@ select {
   .modal-title {
     font-size: 1.5rem;
   }
-  .modal-form-section {
-    padding: 32px 20px;
+  .category-select-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 8px;
   }
-  .modal-form-section h3 {
-    font-size: 1.4rem;
+  .form-group-inline {
+    padding: 10px 14px;
   }
   .form-grid {
     grid-template-columns: 1fr;
@@ -2796,18 +2791,13 @@ select {
 .rating-selector-large {
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 10px 0 30px;
-}
-
-.rating-selector-large .stars {
-  gap: 12px;
 }
 
 .category-select-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
   margin-bottom: 24px;
   background: var(--bg-alt);
   padding: 20px;
