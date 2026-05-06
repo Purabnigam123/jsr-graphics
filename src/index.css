@@ -269,18 +269,11 @@ select {
   z-index: 1000;
   padding: 16px 0;
   background: rgba(10, 10, 10, 0.45) !important;
-  backdrop-filter: blur(12px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
-  transform: translateZ(0) !important;
-  -webkit-transform: translateZ(0) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition);
 }
 
-.navbar .container {
-  backdrop-filter: blur(12px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
-}
+/* Container Blur Removed to fix glitch */
 
 .navbar::before,
 .navbar::after {
@@ -960,7 +953,6 @@ select {
   transition: all var(--transition);
   opacity: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  position: relative;
 }
 .service-card.hidden {
   display: none;
@@ -1386,8 +1378,6 @@ select {
   border-radius: var(--radius-lg);
   transition: all var(--transition);
   text-align: left;
-  position: relative;
-  overflow: hidden;
 }
 .why-card:hover {
   border-color: var(--primary);
@@ -1847,9 +1837,6 @@ select {
   .about-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .about-card::before {
-    transform: scaleX(1) !important;
-  }
   .why-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1906,12 +1893,6 @@ select {
     margin-bottom: 32px;
   }
 
-  /* -- Cards Glass/Line Fix -- */
-  .about-card::before {
-    transform: scaleX(1) !important;
-  }
-
-  .service-card,
   /* -- Navbar -- */
   .nav-links {
     display: none;
