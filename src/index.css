@@ -1289,10 +1289,17 @@ select {
   }
 }
 
-.service-search {
-  position: relative;
+.search-filter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 400px;
   margin: 0 auto 32px;
+  width: 100%;
+}
+.service-search {
+  position: relative;
+  width: 100%;
 }
 .service-search input {
   width: 100%;
@@ -1316,6 +1323,9 @@ select {
   color: var(--text-muted);
   width: 18px;
   height: 18px;
+}
+.mobile-filter-container {
+  display: none; /* Hide on desktop */
 }
 
 /* ========== FEATURED ========== */
@@ -2091,12 +2101,113 @@ select {
 
   /* -- Services -- */
   .services-filter {
-    gap: 8px;
-    margin-bottom: 28px;
+    display: none !important; /* Hide original pills filter on mobile */
   }
-  .filter-btn {
-    padding: 8px 16px;
-    font-size: 0.8rem;
+  .search-filter-wrapper {
+    flex-direction: column;
+    max-width: 500px;
+    gap: 12px;
+    padding: 0 16px;
+    width: 100%;
+  }
+  .search-filter-row {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+  }
+  .search-filter-row .service-search {
+    flex: 1;
+  }
+  .mobile-filter-container {
+    display: block;
+  }
+  .mobile-filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px; /* Small square button */
+    height: 42px; /* Small square button */
+    padding: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%; /* Perfect circle */
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+  .mobile-filter-btn:hover,
+  .mobile-filter-btn.active {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(163, 45, 45, 0.04);
+    box-shadow: 0 0 0 3px rgba(233, 47, 47, 0.1);
+  }
+  .mobile-filter-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Collapsible Category Filter Card */
+  .mobile-filter-card {
+    width: 100%;
+    border: 1.5px solid transparent; /* Allocate space for gradient border */
+    background: 
+      linear-gradient(var(--bg-card), var(--bg-card)) padding-box, 
+      linear-gradient(135deg, var(--primary), var(--orange)) border-box;
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transform-origin: top center;
+    animation: filterCardFadeIn 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  @keyframes filterCardFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.97) translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  .mobile-filter-card-header {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .mobile-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .mobile-filter-pill {
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-filter-pill:hover,
+  .mobile-filter-pill.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(163, 45, 45, 0.15);
   }
   .services-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -2406,22 +2517,7 @@ select {
 
   /* -- Services -- */
   .services-filter {
-    justify-content: flex-start;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    gap: 8px;
-    padding-bottom: 8px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .services-filter::-webkit-scrollbar {
-    display: none;
-  }
-  .filter-btn {
-    white-space: nowrap;
-    flex-shrink: 0;
-    padding: 8px 14px;
-    font-size: 0.78rem;
+    display: none !important;
   }
   .services-grid {
     grid-template-columns: 1fr;

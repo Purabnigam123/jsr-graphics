@@ -136,6 +136,7 @@ export default function Services() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedService, setSelectedService] = useState(null);
   const [showAll, setShowAll] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   
   const [headerRef, headerVisible] = useReveal();
   const [searchRef, searchVisible] = useReveal();
@@ -171,17 +172,54 @@ export default function Services() {
           </p>
         </div>
 
-        <div className={`service-search${searchVisible ? ' reveal active' : ' reveal'}`} ref={searchRef}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search services..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className={`search-filter-wrapper${searchVisible ? ' reveal active' : ' reveal'}`} ref={searchRef}>
+          <div className="search-filter-row">
+            <div className="service-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search services..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+
+            <div className="mobile-filter-container">
+              <button 
+                className={`mobile-filter-btn${mobileDropdownOpen ? ' active' : ''}`}
+                onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                aria-label="Toggle filters"
+              >
+                <LucideIcons.SlidersHorizontal size={18} />
+              </button>
+            </div>
+          </div>
+
+          {mobileDropdownOpen && (
+            <div className="mobile-filter-card">
+              <div className="mobile-filter-card-header">
+                Filter by Category
+              </div>
+              <div className="mobile-filter-grid">
+                {filters.map((f) => (
+                  <button
+                    key={f.key}
+                    className={`mobile-filter-pill${activeFilter === f.key ? ' active' : ''}`}
+                    onClick={() => {
+                      setActiveFilter(f.key);
+                      setShowAll(false);
+                      setMobileDropdownOpen(false); // Close card on filter select
+                    }}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className={`services-filter${filterVisible ? ' reveal active' : ' reveal'}`} ref={filterRef}>
