@@ -82,12 +82,6 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© 2025 JSR Graphics. All Rights Reserved.</span>
-          <div className="social-links">
-            <a href="#" aria-label="Facebook"><Facebook size={18} /></a>
-            <a href="#" aria-label="Instagram"><Instagram size={18} /></a>
-            <a href="#" aria-label="LinkedIn"><Linkedin size={18} /></a>
-            <a href="https://api.whatsapp.com/send?phone=919213858574" aria-label="WhatsApp"><MessageCircle size={18} /></a>
-          </div>
         </div>
       </div>
     </footer>
