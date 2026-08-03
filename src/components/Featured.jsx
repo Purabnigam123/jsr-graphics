@@ -1,4 +1,4 @@
-import { useReveal } from '../hooks/useAnimations';
+ import { useReveal } from '../hooks/useAnimations';
 
 
 const featured = [
