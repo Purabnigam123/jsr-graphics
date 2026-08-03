@@ -63,14 +63,19 @@ export default function Footer() {
           <div>
             <h4>Contact</h4>
             <div className="footer-links">
-              <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <a 
+                href="https://www.google.com/maps/place/JSR+Graphics/@28.6285194,77.1341519,17z/data=!3m1!4b1!4m6!3m5!1s0x390d04d9eadeb0dd:0x9e078cb2253af5c1!8m2!3d28.6285194!4d77.1367268!16s%2Fg%2F11cp7hp6gs?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+              >
                 <MapPin size={16} color="var(--primary)" /> <span>Naraina, Delhi</span>
               </a>
-              <a href="tel:01141743267" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Phone size={16} color="var(--primary)" /> <span>011-41743267</span>
+              <a href="tel:9213858574" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Phone size={16} color="var(--primary)" /> <span>+91 92138 58574</span>
               </a>
               <a href="mailto:jsrgraphicsinfo@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Mail size={16} color="var(--primary)" /> <span>Email Us</span>
+                <Mail size={16} color="var(--primary)" /> <span>jsrgraphicsinfo@gmail.com</span>
               </a>
             </div>
           </div>

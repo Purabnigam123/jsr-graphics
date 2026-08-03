@@ -3317,4 +3317,16 @@ select {
 .delay-400 { transition-delay: 400ms; }
 .delay-500 { transition-delay: 500ms; }
 
+/* Submit button success/error states */
+.btn-success {
+  background: #10b981 !important; /* Green */
+  border-color: #10b981 !important;
+  color: #ffffff !important;
+}
+.btn-error {
+  background: #ef4444 !important; /* Red */
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
 

@@ -70,17 +70,47 @@ export default function Contact() {
   const [headerRef, headerVisible] = useReveal();
   const [formRef, formVisible] = useReveal();
   const [infoRef, infoVisible] = useReveal();
-  const [submitted, setSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
   const [selectedService, setSelectedService] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setSelectedService('');
-      e.target.reset();
-    }, 3000);
+    setSubmitStatus('submitting');
+
+    const formData = new FormData(e.target);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New Quote Request from JSR Graphics Contact Form");
+    formData.append("from_name", "JSR Graphics Contact Form");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setSelectedService('');
+        e.target.reset();
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 4000);
+      } else {
+        setSubmitStatus('error');
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 4000);
+      }
+    } catch (error) {
+      console.error("Web3Forms submission error:", error);
+      setSubmitStatus('error');
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 4000);
+    }
   };
 
   return (
@@ -101,15 +131,15 @@ export default function Contact() {
           >
             <div className="form-group">
               <label htmlFor="name">Full Name</label>
-              <input type="text" id="name" placeholder="Your name" required />
+              <input type="text" id="name" name="name" placeholder="Your name" required />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" placeholder="you@email.com" required />
+              <input type="email" id="email" name="email" placeholder="you@email.com" required />
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
-              <input type="tel" id="phone" placeholder="+91 98XXX XXXXX" required />
+              <input type="tel" id="phone" name="phone" placeholder="+91 98XXX XXXXX" required />
             </div>
             <div className="form-group">
               <label>Service Required</label>
@@ -123,39 +153,65 @@ export default function Contact() {
             </div>
             <div className="form-group">
               <label htmlFor="message">Message</label>
-              <textarea id="message" placeholder="Describe your project requirements..." rows="4"></textarea>
+              <textarea id="message" name="message" placeholder="Describe your project requirements..." rows="4"></textarea>
             </div>
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              {submitted ? (
+            <button 
+              type="submit" 
+              className={`btn ${submitStatus === 'success' ? 'btn-success' : submitStatus === 'error' ? 'btn-error' : 'btn-primary'}`} 
+              style={{ width: '100%', justifyContent: 'center' }}
+              disabled={submitStatus === 'submitting'}
+            >
+              {submitStatus === 'submitting' && (
+                <>Sending...</>
+              )}
+              {submitStatus === 'success' && (
                 <><Check size={18} style={{ marginRight: '8px' }} /> Quote Requested!</>
-              ) : (
+              )}
+              {submitStatus === 'error' && (
+                <>Error! Please try again.</>
+              )}
+              {submitStatus === 'idle' && (
                 <><span style={{ marginRight: '8px' }}>Request a Quote</span> <MoveRight size={18} /></>
               )}
             </button>
           </form>
 
           <div className={`contact-info${infoVisible ? ' reveal active' : ' reveal'}`} ref={infoRef}>
-            <div className="contact-info-card">
+            <a 
+              className="contact-info-card" 
+              href="https://www.google.com/maps/place/JSR+Graphics/@28.6285194,77.1341519,17z/data=!3m1!4b1!4m6!3m5!1s0x390d04d9eadeb0dd:0x9e078cb2253af5c1!8m2!3d28.6285194!4d77.1367268!16s%2Fg%2F11cp7hp6gs?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div className="contact-info-icon"><MapPin size={20} color="var(--primary)" /></div>
               <div>
                 <h4>Our Office</h4>
                 <p>C-126, 1st Floor, Phase-1,<br />Naraina Industrial Area,<br />New Delhi — 110028</p>
               </div>
-            </div>
-            <div className="contact-info-card">
+            </a>
+            <a 
+              className="contact-info-card" 
+              href="tel:9213858574"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div className="contact-info-icon"><Phone size={20} color="var(--primary)" /></div>
               <div>
                 <h4>Phone</h4>
-                <p>011-41743267<br />+91 9873858572</p>
+                <p>+91 92138 58574</p>
               </div>
-            </div>
-            <div className="contact-info-card">
+            </a>
+            <a 
+              className="contact-info-card" 
+              href="mailto:jsrgraphicsinfo@gmail.com"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <div className="contact-info-icon"><Mail size={20} color="var(--primary)" /></div>
               <div>
                 <h4>Email</h4>
                 <p>jsrgraphicsinfo@gmail.com</p>
               </div>
-            </div>
+            </a>
             <div className="contact-info-card">
               <div className="contact-info-icon"><Clock size={20} color="var(--primary)" /></div>
               <div>

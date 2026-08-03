@@ -14,9 +14,51 @@ const filters = [
 
 function ServiceModal({ service, onClose }) {
   const formRef = useRef(null);
+  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus('submitting');
+
+    const formData = new FormData(e.target);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+    formData.append("access_key", accessKey);
+    formData.append("service_requested", service.name);
+    formData.append("subject", `New Enquiry for "${service.name}" from JSR Graphics`);
+    formData.append("from_name", "JSR Graphics Service Modal");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        e.target.reset();
+        setTimeout(() => {
+          setSubmitStatus('idle');
+          onClose(); // Automatically close modal after success
+        }, 3000);
+      } else {
+        setSubmitStatus('error');
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 4000);
+      }
+    } catch (error) {
+      console.error("Web3Forms modal submission error:", error);
+      setSubmitStatus('error');
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 4000);
+    }
   };
 
   if (!service) return null;
@@ -69,30 +111,37 @@ function ServiceModal({ service, onClose }) {
             <h3>Looking for "{service.name}"?</h3>
             <p>Fill out the form below and our team will get back to you with a custom quote.</p>
             
-            <form className="modal-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="modal-form" onSubmit={handleSubmit}>
               <div className="form-grid">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" placeholder="Your Name" required />
+                  <input type="text" name="name" placeholder="Your Name" required />
                 </div>
                 <div className="form-group">
                   <label>Email Address</label>
-                  <input type="email" placeholder="Your Email" required />
+                  <input type="email" name="email" placeholder="Your Email" required />
                 </div>
                 <div className="form-group">
                   <label>Mobile Number</label>
                   <div className="phone-input">
                     <span className="country-code">+91</span>
-                    <input type="tel" placeholder="10-digit mobile number" required />
+                    <input type="tel" name="phone" placeholder="10-digit mobile number" required />
                   </div>
                 </div>
                 <div className="form-group full">
                   <label>Requirement Details</label>
-                  <textarea placeholder="Tell us more about your printing requirements (quantity, size, etc.)..." rows="3"></textarea>
+                  <textarea name="message" placeholder="Tell us more about your printing requirements (quantity, size, etc.)..." rows="3"></textarea>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary full">
-                Send Enquiry
+              <button 
+                type="submit" 
+                className={`btn ${submitStatus === 'success' ? 'btn-success' : submitStatus === 'error' ? 'btn-error' : 'btn-primary'} full`}
+                disabled={submitStatus === 'submitting'}
+              >
+                {submitStatus === 'submitting' && <>Sending...</>}
+                {submitStatus === 'success' && <><LucideIcons.Check size={18} style={{ marginRight: '8px' }} /> Enquiry Sent!</>}
+                {submitStatus === 'error' && <>Error! Try again.</>}
+                {submitStatus === 'idle' && <>Send Enquiry</>}
               </button>
             </form>
           </div>
